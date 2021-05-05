@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{%block title%} {%endblock%}
+{% block breadcrumb %}
+
+   <li class="breadcrumb-item "><a href="{% url 'home' %}">Boards</a></li>
+   <li class="breadcrumb-item ">{{topic.subject}}</li>
+{%endblock%}
+
+
+{% block content %}
+<div class="container ">
+    
+    {% for post in topic.posts.all  %}
+       <p>*****************************************</p>
+
+        <p>{{post.massage}}</p>
+        <p> {{post.created_dt}} </p> 
+
+        
+        {% if post.created_by == user %}
+        <button>edit</button>
+            
+        {% endif %}
+            
+        <p>*****************************************</p>
+    {% endfor %}
+</div>
+    
+        
+{% endblock %}
